@@ -1,18 +1,19 @@
 import React, {Component} from 'react';
 //import logo from './logo.svg';
 // import './App.css';
-import AdminLanding from './AdminLanding';
+import AdminLanding from './Hostel_Admin_Landing/AdminLanding';
+import { Navbar } from './Navbar';
+import 'antd/dist/antd.css';
 import {BrowserRouter as Router,Route, Switch} from "react-router-dom";
 
 function App() {
   return (
     <Router>
       <main>
-          {/* Navbar */}
           <Navbar/>
           <Switch>
             <Route path = "/admin" exact component = {AdminLanding}/>
-            <Route  component = {Default}/>            
+            <Route path = "/admin/Postupdates" exact component = {AdminLanding}/>
           </Switch>
         </main>
     </Router>
