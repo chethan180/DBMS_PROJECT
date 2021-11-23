@@ -4,6 +4,8 @@ import React, {Component} from 'react';
 import AdminLanding from './Hostel_Admin_Landing/AdminLanding';
 import Postupdates from './Hostel_Admin_Landing/Postupdates';
 import { Navbar } from './Navbar';
+import MessAdminLanding from './Mess_Admin_Landing/AdminLanding';
+import MessPostupdates from './Mess_Admin_Landing/Postupdates';
 import 'antd/dist/antd.css';
 import {BrowserRouter as Router,Route, Switch} from "react-router-dom";
 
@@ -13,6 +15,9 @@ function App() {
       <main>
           <Navbar/>
           <Switch>
+            <Route path = "/admin1" exact component = {MessAdminLanding}/>
+            <Route path = "/admin1/Postupdates" exact component = {MessAdminLanding}/>
+
             <Route path = "/admin" exact component = {AdminLanding}/>
             <Route path = "/admin/Postupdates" exact component = {AdminLanding}/>
           </Switch>
