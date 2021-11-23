@@ -31,7 +31,8 @@ const AdminLanding = () =>
                 <Link to = '/admin/Postupdates'/>
               </Menu.Item>
               <Menu.Item key="2" icon={<VideoCameraOutlined />}>
-                nav 2
+                Complaints
+                <Link to = '/admin'/>
               </Menu.Item>
               <Menu.Item key="3" icon={<UploadOutlined />}>
                 nav 3
