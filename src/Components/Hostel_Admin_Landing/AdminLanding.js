@@ -5,6 +5,7 @@ import {BrowserRouter as Router,Route, Switch} from "react-router-dom";
 import { Layout, Menu } from 'antd';
 import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
 import Postupdates from './Postupdates';
+import { Complaints } from "./Complaints";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -43,10 +44,12 @@ const AdminLanding = () =>
           <Layout>
             {/* <Header className="site-layout-sub-header-background" style={{ padding: 0 }} /> */}
             <Content style={{ margin: '24px 16px 0' }}>
-
-                <Route path = '/admin/Postupdates' exact Component = {Postupdates}/>
+              {/* <Postupdates/> */}
+              <Route path = "/admin" exact  component = {Complaints}/>
+              <Route path = "/admin/Postupdates" exact component = {Postupdates}/>
+                
             </Content>
-            <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+            {/* <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer> */}
           </Layout>
         </Layout>
         );
