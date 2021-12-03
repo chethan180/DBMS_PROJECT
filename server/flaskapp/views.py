@@ -7,6 +7,11 @@ def register():
     data = dbh.add_user()
     return data
 
+@app.route("/user/complaint/", methods = ["POST"])
+def complaint():  
+    data = dbh.complaint()
+    return data
+
 @app.route("/user/update/", methods = ["POST"])
 def update():
     data = dbh.update_user()
