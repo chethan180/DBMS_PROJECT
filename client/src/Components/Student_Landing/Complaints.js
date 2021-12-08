@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {BrowserRouter as Router,Route, Switch} from "react-router-dom";
+import { Rate } from 'antd';
 import {
   Form,
   Input,
@@ -56,6 +57,10 @@ const Postupdates = () => {
             <Select.Option value="Vindhya">Vindhya</Select.Option>
           </Select>
         </Form.Item>
+
+        {/* <Form.Item label="Type of problem">
+        <Rate allowHalf defaultValue={0.0} />
+        </Form.Item> */}
        
         <Form.Item label="Remarks">
           <Input.TextArea/>

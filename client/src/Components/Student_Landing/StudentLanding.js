@@ -36,7 +36,8 @@ const StudentLanding = () =>
                 <Link to = '/student'/>
               </Menu.Item>
               <Menu.Item key="3" icon={<UploadOutlined />}>
-                nav 3
+                Mess Feedback
+                <Link to = '/student/Messpage'/>
               </Menu.Item>
               <Menu.Item key="4" icon={<UserOutlined />}>
                 nav 4
@@ -44,14 +45,11 @@ const StudentLanding = () =>
             </Menu>
           </Sider>
           <Layout>
-            {/* <Header className="site-layout-sub-header-background" style={{ padding: 0 }} /> */}
             <Content style={{ margin: '24px 16px 0' }}>
-              {/* <Postupdates/> */}
               <Route path = "/student" exact  component = {Complaints}/>
               <Route path = "/student/Postupdates" exact component = {Complaints}/>
-                
+              <Route path = "/student/Messpage" exact component = {Messpage}/>
             </Content>
-            {/* <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer> */}
           </Layout>
         </Layout>
         );
