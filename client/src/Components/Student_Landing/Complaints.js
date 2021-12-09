@@ -58,9 +58,7 @@ const Postupdates = () => {
           </Select>
         </Form.Item>
 
-        {/* <Form.Item label="Type of problem">
-        <Rate allowHalf defaultValue={0.0} />
-        </Form.Item> */}
+       
        
         <Form.Item label="Remarks">
           <Input.TextArea/>

@@ -4,43 +4,46 @@ import { Table, Tag, Space } from 'antd';
 const { Column, ColumnGroup } = Table;
 
 
-const MessComplaints = () => {
+export const Complaints = () => {
     const data = [
         {
           key: '1',
-          firstName: 'John',
-          lastName: 'Brown',
-          age: 32,
-          address: 'New York No. 1 Lake Park',
+          Emp_Id:'1',
+          Staff_Name:'sukesh',
+          RoomNumber: 'John',
+          Block: 'Brown',
+          Remarks: 'New York No. 1 Lake Park',
           tags: ['nice', 'developer'],
         },
         {
           key: '2',
-          firstName: 'Jim',
-          lastName: 'Green',
-          age: 42,
-          address: 'London No. 1 Lake Park',
+          Emp_Id:'1',
+          Staff_Name:'sukesh',
+          RoomNumber: 'Jim',
+          Block: 'Green',
+          Remarks: 'London No. 1 Lake Park',
           tags: ['loser'],
         },
         {
           key: '3',
-          firstName: 'Joe',
-          lastName: 'Black',
-          age: 32,
-          address: 'Sidney No. 1 Lake Park',
+          Emp_Id:'1',
+          Staff_Name:'sukesh',
+          RoomNumber: 'Joe',
+          Block: 'Black',
+          Remarks: 'Sidney No. 1 Lake Park',
           tags: ['cool', 'teacher'],
         },
       ];
       return(
         <Table dataSource={data}>
-        <ColumnGroup title="Name">
-          <Column title="First Name" dataIndex="firstName" key="firstName" />
-          <Column title="Last Name" dataIndex="lastName" key="lastName" />
-        </ColumnGroup>
-        <Column title="Age" dataIndex="age" key="age" />
-        <Column title="Address" dataIndex="address" key="address" />
+          <Column title="Emp_Id" dataIndex="Emp_Id" key="Emp_Id" />
+          <Column title="Staff_Name" dataIndex="Staff_Name" key="Staff_Name" />
+        {/* <ColumnGroup title="Name"> */}
+          <Column title="Room Number" dataIndex="RoomNumber" key="RoomNumber" />
+          <Column title="Block" dataIndex="Block" key="Block" />
+        {/* </ColumnGroup> */}
         <Column
-          title="Tags"
+          title="Type of Problem"
           dataIndex="tags"
           key="tags"
           render={tags => (
@@ -53,13 +56,16 @@ const MessComplaints = () => {
             </>
           )}
         />
+        
+        <Column title="Remarks" dataIndex="Remarks" key="Remarks" />
+        
         <Column
-          title="Action"
+          title="Is_Solved"
           key="action"
           render={(text, record) => (
             <Space size="middle">
-              <a>Invite {record.lastName}</a>
-              <a>Delete</a>
+              <a>Yes</a>
+              <a>No</a>
             </Space>
           )}
         />
@@ -69,4 +75,4 @@ const MessComplaints = () => {
 
 
 
-export default MessComplaints;
+
