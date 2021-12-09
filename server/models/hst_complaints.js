@@ -6,7 +6,7 @@ const hst_complaints = mongoose.Schema({
     Sblock: { type: String, required: true },
     Type: { type: String, required: true },
     Comments: { type: String, required: true },
-    is_Solved: { type: Boolean, required: true },
+    is_Solved: { type: Boolean},
 });
 
 export default mongoose.model("hst_complaints", hst_complaints);

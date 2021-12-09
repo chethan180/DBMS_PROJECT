@@ -14,6 +14,6 @@ const staffSchema = mongoose.Schema({
     
 });
 
-export default mongoose.model("staff", staffSchema);
+export default mongoose.model("staff", staffSchema );
 
 
