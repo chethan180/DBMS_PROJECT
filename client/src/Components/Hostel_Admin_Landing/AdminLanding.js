@@ -6,6 +6,7 @@ import { Layout, Menu } from 'antd';
 import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
 import Postupdates from './Postupdates';
 import { Complaints } from "./Complaints";
+import Allotment from "./Allotment";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -35,7 +36,8 @@ const AdminLanding = () =>
                 <Link to = '/admin'/>
               </Menu.Item>
               <Menu.Item key="3" icon={<UploadOutlined />}>
-                nav 3
+                Hostel Allotment
+                <Link to = '/admin/Allotment'/>
               </Menu.Item>
               <Menu.Item key="4" icon={<UserOutlined />}>
                 nav 4
@@ -46,7 +48,7 @@ const AdminLanding = () =>
             <Content style={{ margin: '24px 16px 0' }}>
               <Route path = "/admin" exact  component = {Complaints}/>
               <Route path = "/admin/Postupdates" exact component = {Postupdates}/>
-                
+              <Route path = "/admin/Allotment" exact component = {Allotment}/>
             </Content>
           </Layout>
         </Layout>

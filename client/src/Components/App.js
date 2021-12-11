@@ -21,6 +21,7 @@ function App() {
 
             <Route path = "/admin" exact component = {AdminLanding}/>
             <Route path = "/admin/Postupdates" exact component = {AdminLanding}/>
+            <Route path = "/admin/Allotment" exact component = {AdminLanding}/>
 
             <Route path = "/student" exact component = {StudentLanding}/>
             <Route path = "/student/Messpage" exact component = {StudentLanding}/>

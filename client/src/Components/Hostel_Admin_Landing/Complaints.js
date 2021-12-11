@@ -1,38 +1,37 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Table, Tag, Space } from 'antd';
-import axios from 'axios';
 
 const { Column, ColumnGroup } = Table;
 
 
 export const Complaints = () => {
-
-
-
     const data = [
         {
           key: '1',
           firstName: 'John',
           lastName: 'Brown',
-          age: 32,
-          address: 'New York No. 1 Lake Park',
-          tags: ['nice', 'developer'],
+          RollNumber: 32,
+          Mail_Id: 'New York No. 1 Lake Park',
+          MobileNumber:'98929839',
+          tags: ['Yes'],
         },
         {
           key: '2',
           firstName: 'Jim',
           lastName: 'Green',
-          age: 42,
-          address: 'London No. 1 Lake Park',
-          tags: ['loser'],
+          RollNumber: 42,
+          Mail_Id: 'London No. 1 Lake Park',
+          MobileNumber:'98929839',
+          tags: ['No'],
         },
         {
           key: '3',
           firstName: 'Joe',
           lastName: 'Black',
-          age: 32,
-          address: 'Sidney No. 1 Lake Park',
-          tags: ['cool', 'teacher'],
+          RollNumber: 32,
+          Mail_Id: 'Sidney No. 1 Lake Park',
+          MobileNumber:'98929839',
+          tags: ['Yes'],
         },
       ];
       return(
@@ -41,10 +40,11 @@ export const Complaints = () => {
           <Column title="First Name" dataIndex="firstName" key="firstName" />
           <Column title="Last Name" dataIndex="lastName" key="lastName" />
         </ColumnGroup>
-        <Column title="Age" dataIndex="age" key="age" />
-        <Column title="Address" dataIndex="address" key="address" />
+        <Column title="Roll Number" dataIndex="RollNumber" key="RollNumber" />
+        <Column title="Mail_Id" dataIndex="Mail_Id" key="Mail_Id" />
+        <Column title="Mobile Number" dataIndex="MobileNumber" key="MobileNumber" />
         <Column
-          title="Tags"
+          title=" Fully Vaccinated"
           dataIndex="tags"
           key="tags"
           render={tags => (
@@ -62,8 +62,7 @@ export const Complaints = () => {
           key="action"
           render={(text, record) => (
             <Space size="middle">
-              <a>Invite {record.lastName}</a>
-              <a>Delete</a>
+              <a>Remove {record.lastName}</a>
             </Space>
           )}
         />

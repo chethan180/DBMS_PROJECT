@@ -72,7 +72,7 @@ const Complaints = () => {
       </Table>
       );
 }
-
 export default Complaints;
+
 
 
