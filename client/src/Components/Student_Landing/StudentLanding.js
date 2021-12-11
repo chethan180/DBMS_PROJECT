@@ -46,7 +46,7 @@ const StudentLanding = () =>
           </Sider>
           <Layout>
             <Content style={{ margin: '24px 16px 0' }}>
-              <Route path = "/student" exact  component = {Complaints}/>
+              <Route path = "/student" exact  component = {Updates}/>
               <Route path = "/student/Postupdates" exact component = {Complaints}/>
               <Route path = "/student/Messpage" exact component = {Messpage}/>
             </Content>

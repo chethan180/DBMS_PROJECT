@@ -4,7 +4,7 @@ import { Table, Tag, Space } from 'antd';
 const { Column, ColumnGroup } = Table;
 
 
-export const Complaints = () => {
+const Complaints = () => {
     const data = [
         {
           key: '1',
@@ -73,6 +73,6 @@ export const Complaints = () => {
       );
 }
 
-
+export default Complaints;
 
 
