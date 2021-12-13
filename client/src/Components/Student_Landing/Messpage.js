@@ -23,15 +23,14 @@ const Messpage = () => {
     const onFinish = (values) => {
       console.log('Received values of form: ', values);
       const rangeTimeValue = values['Date_Of_Issue'];
-      // var dateString = moment(now). format('YYYY-MM-DD');
-      // console.log(rangeTimeValue._d.format('YYYY-MM-DD'));
+      
       const Rating = values['Rating'].toString();
       const Values = {
         ...values ,
         "Emp_Id" :"1",
         'Date_Of_Issue' : "2002-12-12",
         "Rating" : Rating 
-        // 'Date_Of_Issue' : rangeTimeValue[0].format('YYYY-MM-DD HH:mm:ss'),
+  
       };
       console.log("Value" , Values);
       dispatch(messcomp(Values));

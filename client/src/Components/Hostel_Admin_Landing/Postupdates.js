@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import {BrowserRouter as Router,Route, Switch} from "react-router-dom";
+import { wu } from '../../actions/crud'; 
+import { useDispatch,useSelector } from 'react-redux';
 import {
   Form,
   Input,
@@ -12,8 +14,26 @@ import {
   TreeSelect,
 } from 'antd';
 
+const { Option } = Select;
+
 const Postupdates = () => {
   const [componentSize, setComponentSize] = useState('default');
+  const [form] = Form.useForm();
+  const dispatch = useDispatch();
+  const today = Date.now();
+
+  function onFinish(values) {
+    console.log('Received values of form: ', values);
+    const Value = {
+      ...values,
+      "Emp_Id": "1",
+      "Date_Of_Issue": new Intl.DateTimeFormat('en-US', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }).format(today),
+    };
+    console.log(Value);
+    dispatch(wu(Value));
+  }
+  const post = useSelector( (state) => state.wupdt.data);
+  console.log(post);
 
   const onFormLayoutChange = ({ size }) => {
     setComponentSize(size);
@@ -22,6 +42,9 @@ const Postupdates = () => {
   return (
     <>
       <Form
+      form={form}
+      name="register"
+      onFinish={onFinish}
         labelCol={{
           span: 4,
         }}
@@ -35,62 +58,28 @@ const Postupdates = () => {
         onValuesChange={onFormLayoutChange}
         size={componentSize}
       >
-        <Form.Item label="Form Size" name="size">
-          <Radio.Group>
-            <Radio.Button value="small">Small</Radio.Button>
-            <Radio.Button value="default">Default</Radio.Button>
-            <Radio.Button value="large">Large</Radio.Button>
-          </Radio.Group>
-        </Form.Item>
-        <Form.Item label="Input">
-          <Input />
-        </Form.Item>
-        <Form.Item label="Select">
+        
+
+        <Form.Item name="Batch" label="Batch">
           <Select>
-            <Select.Option value="demo">Demo</Select.Option>
+            <Select.Option value="2016">2016</Select.Option>
+            <Select.Option value="2017">2017</Select.Option>
+            <Select.Option value="2018">2018</Select.Option>
+            <Select.Option value="2019">2019</Select.Option>
           </Select>
         </Form.Item>
-        <Form.Item label="TreeSelect">
-          <TreeSelect
-            treeData={[
-              {
-                title: 'Light',
-                value: 'light',
-                children: [
-                  {
-                    title: 'Bamboo',
-                    value: 'bamboo',
-                  },
-                ],
-              },
-            ]}
-          />
+
+        <Form.Item
+        name = "Comments"
+        label="Remarks">
+          <Input.TextArea/>
         </Form.Item>
-        <Form.Item label="Cascader">
-          <Cascader
-            options={[
-              {
-                value: 'zhejiang',
-                label: 'Zhejiang',
-                children: [
-                  {
-                    value: 'hangzhou',
-                    label: 'Hangzhou',
-                  },
-                ],
-              },
-            ]}
-          />
-        </Form.Item>
-        <Form.Item label="DatePicker">
-          <DatePicker />
-        </Form.Item>
-        <Form.Item label="InputNumber">
-          <InputNumber />
-        </Form.Item>
-        <Form.Item label="Button">
-          <Button>Button</Button>
-        </Form.Item>
+        <Form.Item>
+        <Button type="primary" htmlType="submit">
+          Register
+        </Button>
+      </Form.Item>
+        
       </Form>
     </>
   );

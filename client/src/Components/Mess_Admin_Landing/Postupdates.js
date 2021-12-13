@@ -39,8 +39,9 @@ const Postupdates = () => {
         <Form.Item label="Remarks">
           <Input.TextArea/>
         </Form.Item>
-        <Form.Item label="">
-          <Button>Post</Button>
+        
+        <Form.Item>
+          <Button type="primary" htmlType="submit">Post</Button>
         </Form.Item>
       </Form>
     </>

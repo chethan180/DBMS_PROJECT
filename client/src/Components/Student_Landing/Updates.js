@@ -19,12 +19,9 @@ const Updates = () => {
     console.log(post);
 
     useEffect(() => {
-      // console.log(post);
+    
       if(post){
-        // console.log(post);
-        // const q = post;
         setdata(post);
-        // console.log(posts);
         setloading(false);
       }
     });

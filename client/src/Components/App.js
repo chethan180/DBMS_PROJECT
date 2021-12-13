@@ -4,7 +4,8 @@ import React, {Component} from 'react';
 import AdminLanding from './Hostel_Admin_Landing/AdminLanding';
 import Postupdates from './Hostel_Admin_Landing/Postupdates';
 import Feedback from './Hostel_Admin_Landing/Feedback';
-import { Navbar } from './Navbar';
+import Navbar from './Student_Landing/navibar';
+import SignUp from './Student_Landing/Auth/Auth';
 import MessAdminLanding from './Mess_Admin_Landing/AdminLanding';
 import StudentLanding from '../Components/Student_Landing/StudentLanding';
 import MessPostupdates from './Mess_Admin_Landing/Postupdates';
@@ -28,6 +29,7 @@ function App() {
             <Route path = "/student" exact component = {StudentLanding}/>
             <Route path = "/student/Messpage" exact component = {StudentLanding}/>
             <Route path = "/student/complaints" exact component = {StudentLanding}/>
+            <Route path = "/auth" exact component = {SignUp}/>
             {/* <Route path = "/admin/Postupdates" exact component = {AdminLanding}/> */}
           </Switch>
         </main>
