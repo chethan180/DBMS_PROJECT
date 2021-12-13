@@ -6,6 +6,7 @@ import { Layout, Menu } from 'antd';
 import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
 import MessPostupdates from './Postupdates';
 import MessComplaints from './Complaints';
+import Feedback from './Feedback';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -35,7 +36,8 @@ const MessAdminLanding = () =>
                 <Link to = '/admin1'/>
               </Menu.Item>
               <Menu.Item key="3" icon={<UploadOutlined />}>
-                nav 3
+                Feedback
+                <Link to = '/admin1/Feedback'/>
               </Menu.Item>
               <Menu.Item key="4" icon={<UserOutlined />}>
                 nav 4
@@ -48,7 +50,7 @@ const MessAdminLanding = () =>
               {/* <Postupdates/> */}
               <Route path = "/admin1" exact  component = {MessComplaints}/>
               <Route path = "/admin1/Postupdates" exact component = {MessPostupdates}/>
-                
+              <Route path = "/admin1/Feedback" exact component = {Feedback}/>
             </Content>
             {/* <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer> */}
           </Layout>

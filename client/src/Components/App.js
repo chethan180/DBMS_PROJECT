@@ -3,13 +3,13 @@ import React, {Component} from 'react';
 // import './App.css';
 import AdminLanding from './Hostel_Admin_Landing/AdminLanding';
 import Postupdates from './Hostel_Admin_Landing/Postupdates';
-import  Navbar  from './Student_Landing/navibar';
+import Feedback from './Hostel_Admin_Landing/Feedback';
+import { Navbar } from './Navbar';
 import MessAdminLanding from './Mess_Admin_Landing/AdminLanding';
 import StudentLanding from '../Components/Student_Landing/StudentLanding';
 import MessPostupdates from './Mess_Admin_Landing/Postupdates';
 import 'antd/dist/antd.css';
 import {BrowserRouter as Router,Route, Switch} from "react-router-dom";
-import SignUp from './Student_Landing/Auth/Auth';
 
 function App() {
   return (
@@ -17,10 +17,9 @@ function App() {
       <main>
           <Navbar/>
           <Switch>
-            <Route path = "/auth" exact component = {SignUp} />
-
             <Route path = "/admin1" exact component = {MessAdminLanding}/>
             <Route path = "/admin1/Postupdates" exact component = {MessAdminLanding}/>
+            <Route path = "/admin1/Feedback" exact component = {MessAdminLanding}/>
 
             <Route path = "/admin" exact component = {AdminLanding}/>
             <Route path = "/admin/Postupdates" exact component = {AdminLanding}/>
