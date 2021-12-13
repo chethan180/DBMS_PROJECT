@@ -11,7 +11,7 @@ import {
   Button,
   AutoComplete,
 } from 'antd';
-import {comp} from "../../actions/crud";
+import {comp} from "../../actions/crud"
 import { useDispatch , useSelector } from "react-redux";
 const { Option } = Select;
 
@@ -49,15 +49,23 @@ const tailFormItemLayout = {
 const Complaints = () => {
   const [form] = Form.useForm();
   const dispatch = useDispatch();
+  const today = Date.now();
 
-  const onFinish = (values) => {
+  function onFinish(values) {
     console.log('Received values of form: ', values);
-    const Value = {...values ,"Emp_Id" : "1"};
+    const Value = {
+      ...values,
+      "Emp_Id": "1",
+      "Complained_Date": new Intl.DateTimeFormat('en-US', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }).format(today),
+    };
     console.log(Value);
     dispatch(comp(Value));
-  };
+  }
 
-  const post = useSelector((state) => state.compl.data);
+  // const post = useSelector((state) => state.compl.data);
+  // console.log(post);
+
+  const post = useSelector( (state) => state.comp.data);
   console.log(post);
 
 

@@ -12,14 +12,34 @@ import {
     TreeSelect,
   } from 'antd';
 import { Rate } from 'antd';
+import { messcomp } from '../../actions/crud';
+import {useSelector , useDispatch} from "react-redux";
 
 const Messpage = () => {
     const [componentSize, setComponentSize] = useState('default');
     const [form] = Form.useForm();
+    const dispatch = useDispatch();
 
     const onFinish = (values) => {
       console.log('Received values of form: ', values);
+      const rangeTimeValue = values['Date_Of_Issue'];
+      // var dateString = moment(now). format('YYYY-MM-DD');
+      // console.log(rangeTimeValue._d.format('YYYY-MM-DD'));
+      const Rating = values['Rating'].toString();
+      const Values = {
+        ...values ,
+        "Emp_Id" :"1",
+        'Date_Of_Issue' : "2002-12-12",
+        "Rating" : Rating 
+        // 'Date_Of_Issue' : rangeTimeValue[0].format('YYYY-MM-DD HH:mm:ss'),
+      };
+      console.log("Value" , Values);
+      dispatch(messcomp(Values));
+
     };
+
+    const post = useSelector((state) => state.messcomp.data);
+    console.log(post);
   
   const onFormLayoutChange = ({ size }) => {
     setComponentSize(size);
@@ -45,12 +65,21 @@ return (
         size={componentSize}
       >
         
-        <Form.Item name = "Emp_Id" label="Student ID">
+        {/* <Form.Item name = "Emp_Id" label="Student ID">
           <Input />
-        </Form.Item>
+        </Form.Item> */}
         
         <Form.Item name = "Date_Of_Issue" label="DatePicker">
           <DatePicker />
+        </Form.Item>
+
+        <Form.Item name = "noon" label="select">
+          <Select>
+            <Select.Option value="breakfast">breakfast</Select.Option>
+            <Select.Option value="Lunch">Lunch</Select.Option>
+            <Select.Option value="Snacks">Snacks</Select.Option>
+            <Select.Option value="Dinner">Dinner</Select.Option>
+          </Select>
         </Form.Item>
 
         <Form.Item name = "Rating" label="Rating">

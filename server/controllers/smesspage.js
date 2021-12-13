@@ -10,7 +10,7 @@ export const sm =
         console.log(oldStaff);
         if (!oldStaff) return res.status(404).json({message : "User dosen't exist"});
 
-        const result = await mess_remarks.create({Emp_Id : x.Emp_Id ,Rating : x.Rating ,Remarks : x.Remarks , Date_Of_Issue : x.Date_Of_Issue });
+        const result = await mess_remarks.create({Emp_Id : x.Emp_Id ,Rating : x.Rating ,noon : x.noon , Remarks : x.Remarks , Date_Of_Issue : x.Date_Of_Issue });
         // console.log(result);
         return res.status(200).json(result);
         // const result = await leave.find({ 'Emp_Id': x.Emp_Id }).exec();

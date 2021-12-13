@@ -1,8 +1,8 @@
-import {  UPDATE } from '../constants/actionTypes';
+import {  MESSCOMPL } from '../constants/actionTypes';
 
-export default (updt = [], action) => {
+export default (mcomp = [], action) => {
     switch(action.type ){
-        case UPDATE:
+        case MESSCOMPL: 
             {
                 // console.log(action.payload);
                 // return {...crud ,data: action.payload};
@@ -10,7 +10,7 @@ export default (updt = [], action) => {
             }
         default : 
         {
-            return updt;
+            return mcomp;
         }
     }
 }

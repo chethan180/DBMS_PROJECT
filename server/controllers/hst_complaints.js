@@ -12,7 +12,7 @@ export const hs = async (req,res) => {
         // return res.json(oldStaff);
         if (!oldStaff) return res.status(404).json({message : "User dosen't exist"});
 
-        const result = await hst_complaints.create({Emp_Id : x.Emp_Id ,Sroom : x.Sroom ,Sblock : x.Sblock , Type : x.Type , Comments : x.Comments });
+        const result = await hst_complaints.create({Emp_Id : x.Emp_Id ,Sroom : x.Sroom ,Sblock : x.Sblock , Type : x.Type ,Complained_Date : x.Complained_Date, Comments : x.Comments });
         // console.log(result);
         return res.status(200).json(result);
         // const result = await leave.find({ 'Emp_Id': x.Emp_Id }).exec();
