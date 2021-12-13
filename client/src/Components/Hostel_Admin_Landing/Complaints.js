@@ -1,62 +1,50 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Table, Tag, Space } from 'antd';
+import { wcomp } from '../../actions/crud';
+import {useDispatch ,useSelector } from 'react-redux'; 
+
 
 const { Column, ColumnGroup } = Table;
 
 
 export const Complaints = () => {
-    const data = [
-        {
-          key: '1',
-          firstName: 'John',
-          lastName: 'Brown',
-          RollNumber: 32,
-          Mail_Id: 'New York No. 1 Lake Park',
-          MobileNumber:'98929839',
-          tags: ['Yes'],
-        },
-        {
-          key: '2',
-          firstName: 'Jim',
-          lastName: 'Green',
-          RollNumber: 42,
-          Mail_Id: 'London No. 1 Lake Park',
-          MobileNumber:'98929839',
-          tags: ['No'],
-        },
-        {
-          key: '3',
-          firstName: 'Joe',
-          lastName: 'Black',
-          RollNumber: 32,
-          Mail_Id: 'Sidney No. 1 Lake Park',
-          MobileNumber:'98929839',
-          tags: ['Yes'],
-        },
-      ];
+  const [loading , setloading] = useState(true);
+  const [data ,setdata] = useState([]);
+  const dispatch = useDispatch();
+  const form = {"Emp_Id" : "1"}
+  useEffect(() => {
+    dispatch(wcomp(form));
+  } , [dispatch])
+
+  const post = useSelector( (state) => state.wcomp.data);
+  console.log(post);
+
+  useEffect(() => {
+    // console.log(post);
+    if(post){
+      // console.log(post);
+      // const q = post;
+      setdata(post);
+      // console.log(posts);
+      setloading(false);
+    }
+  });
+  if(loading)
+  {
+      return(
+          <div>
+              wait
+          </div>
+      );
+  }
       return(
         <Table dataSource={data}>
-        <ColumnGroup title="Name">
-          <Column title="First Name" dataIndex="firstName" key="firstName" />
-          <Column title="Last Name" dataIndex="lastName" key="lastName" />
-        </ColumnGroup>
-        <Column title="Roll Number" dataIndex="RollNumber" key="RollNumber" />
-        <Column title="Mail_Id" dataIndex="Mail_Id" key="Mail_Id" />
-        <Column title="Mobile Number" dataIndex="MobileNumber" key="MobileNumber" />
-        <Column
-          title=" Fully Vaccinated"
-          dataIndex="tags"
-          key="tags"
-          render={tags => (
-            <>
-              {tags.map(tag => (
-                <Tag color="blue" key={tag}>
-                  {tag}
-                </Tag>
-              ))}
-            </>
-          )}
-        />
+        <Column title="Id" dataIndex="Emp_Id" key="Emp_Id" />
+        <Column title="Sroom" dataIndex="Sroom" key="Sroom" />
+        <Column title="Sblock" dataIndex="Sblock" key="Sblock" />
+        <Column title="Type" dataIndex="Type" key="Type" />
+        <Column title="Comments" dataIndex="Comments" key="Comments" />
+        <Column title="Complained Date" dataIndex="Complained_Date" key="Complained_Date" />
         <Column
           title="Action"
           key="action"

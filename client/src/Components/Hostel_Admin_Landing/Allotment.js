@@ -155,21 +155,6 @@ const Allotment = () => {
           </Select>
         </Form.Item>
 
-        {/* <Form.Item label="Floor">
-          <Select>
-            <Select.Option value="Ground">Ground</Select.Option>
-            <Select.Option value="First">First</Select.Option>
-            <Select.Option value="Second">Second</Select.Option>
-          </Select>
-        </Form.Item>
-
-        <Form.Item label="Room Number">
-          <Select>
-            <Select.Option value="Ground">1</Select.Option>
-            <Select.Option value="First">2</Select.Option>
-            <Select.Option value="Second">3</Select.Option>
-          </Select>
-        </Form.Item> */}
         <Form.Item label="Room Number">
         <Cascader options={options} onChange={onChange} placeholder="Please select" />
         </Form.Item>

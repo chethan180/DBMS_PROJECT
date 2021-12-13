@@ -62,8 +62,7 @@ const Complaints = () => {
     dispatch(comp(Value));
   }
 
-  // const post = useSelector((state) => state.compl.data);
-  // console.log(post);
+
 
   const post = useSelector( (state) => state.comp.data);
   console.log(post);

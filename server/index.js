@@ -7,6 +7,7 @@ import smess from "./routes/smess.js";
 import supd from "./routes/supd.js";
 import whst from "./routes/whst.js";
 import wupd from "./routes/wupd.js";
+import Auth from './routes/auth.js';
 
 
 
@@ -29,8 +30,7 @@ app.use('/smess',smess);
 app.use('/supd',supd);
 app.use('/whst',whst);
 app.use('/wupd',wupd);
-
-
+app.use('/auth',Auth);
 
 const CONNECTION_URL = `mongodb+srv://${user}:${pswrd}@cluster0.p6xod.mongodb.net/Student?retryWrites=true&w=majority`;
 const PORT = process.env.PORT|| 5000;
