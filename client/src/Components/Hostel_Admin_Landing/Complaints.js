@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Table, Tag, Space } from 'antd';
 import { wcomp } from '../../actions/crud';
+import { solvPosts } from '../../actions/crud';
 import {useDispatch ,useSelector } from 'react-redux'; 
 
 
@@ -19,6 +20,10 @@ export const Complaints = () => {
   const post = useSelector( (state) => state.wcomp.data);
   console.log(post);
 
+  const send = (xyz) => {
+    console.log(xyz);
+    dispatch(solvPosts(xyz));
+  }
   useEffect(() => {
     // console.log(post);
     if(post){
@@ -28,7 +33,7 @@ export const Complaints = () => {
       // console.log(posts);
       setloading(false);
     }
-  });
+  } );
   if(loading)
   {
       return(
@@ -49,8 +54,8 @@ export const Complaints = () => {
           title="Action"
           key="action"
           render={(text, record) => (
-            <Space size="middle">
-              <a>Remove {record.lastName}</a>
+            <Space size="middle" onClick = {() => {send(record)}} >
+              <a>Remove {record.Sroom}</a>
             </Space>
           )}
         />

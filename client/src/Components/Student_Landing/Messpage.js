@@ -21,6 +21,7 @@ const Messpage = () => {
     const dispatch = useDispatch();
 
     const onFinish = (values) => {
+      console.log(values.Date_Of_Issue._d);
       console.log('Received values of form: ', values);
       const rangeTimeValue = values['Date_Of_Issue'];
       
@@ -28,7 +29,7 @@ const Messpage = () => {
       const Values = {
         ...values ,
         "Emp_Id" :"1",
-        'Date_Of_Issue' : "2002-12-12",
+        // 'Date_Of_Issue' : "2002-12-12",
         "Rating" : Rating 
   
       };
