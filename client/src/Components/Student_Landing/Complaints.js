@@ -49,13 +49,14 @@ const tailFormItemLayout = {
 const Complaints = () => {
   const [form] = Form.useForm();
   const dispatch = useDispatch();
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
   const today = Date.now();
 
   function onFinish(values) {
     console.log('Received values of form: ', values);
     const Value = {
       ...values,
-      "Emp_Id": "1",
+      'Emp_Id' : user?.result.Emp_Id,
       "Complained_Date": new Intl.DateTimeFormat('en-US', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }).format(today),
     };
     console.log(Value);

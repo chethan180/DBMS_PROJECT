@@ -5,7 +5,6 @@ import {BrowserRouter as Router,Route, Switch} from "react-router-dom";
 import { Layout, Menu } from 'antd';
 import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
 import MessPostupdates from './Postupdates';
-import MessComplaints from './Complaints';
 import Feedback from './Feedback';
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -31,16 +30,9 @@ const MessAdminLanding = () =>
                 Post Updates
                 <Link to = '/admin1/Postupdates'/>
               </Menu.Item>
-              <Menu.Item key="2" icon={<VideoCameraOutlined />}>
-                Complaints
-                <Link to = '/admin1'/>
-              </Menu.Item>
-              <Menu.Item key="3" icon={<UploadOutlined />}>
+              <Menu.Item key="2" icon={<UploadOutlined />}>
                 Feedback
                 <Link to = '/admin1/Feedback'/>
-              </Menu.Item>
-              <Menu.Item key="4" icon={<UserOutlined />}>
-                nav 4
               </Menu.Item>
             </Menu>
           </Sider>
@@ -48,8 +40,7 @@ const MessAdminLanding = () =>
             {/* <Header className="site-layout-sub-header-background" style={{ padding: 0 }} /> */}
             <Content style={{ margin: '24px 16px 0' }}>
               {/* <Postupdates/> */}
-              <Route path = "/admin1" exact  component = {MessComplaints}/>
-              <Route path = "/admin1/Postupdates" exact component = {MessPostupdates}/>
+              <Route path = "/admin1/" exact component = {MessPostupdates}/>
               <Route path = "/admin1/Feedback" exact component = {Feedback}/>
             </Content>
             {/* <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer> */}

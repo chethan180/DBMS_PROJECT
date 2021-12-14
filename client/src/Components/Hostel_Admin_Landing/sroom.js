@@ -23,107 +23,8 @@ const Allotment = () => {
   function onChange(value) {
     console.log(value);
   }
-  const options = [
-    {
-      value: 'Ground',
-      label: 'Ground',
-      children: [
-        {
-          value: '1',
-          label: '1',
-        },
-        {
-          value: '2',
-          label: '2',
-        },
-        {
-          value: '3',
-          label: '3',
-        },
-        {
-          value: '4',
-          label: '4',
-         
-        }
-      ],
-    },
-    {
-      value: 'First',
-      label: 'First',
-      children: [
-        {
-          value: '21',
-          label: '21',
-        },
-        {
-          value: '22',
-          label: '22',
-        },
-        {
-          value: '23',
-          label: '23',
-        },
-        {
-          value: '24',
-          label: '24',
-          
-        }
-      ],
-    },
-    {
-      value: 'Second',
-      label: 'Second',
-      children: [
-        {
-          value: '41',
-          label: '41',
-        },
-        {
-          value: '42',
-          label: '42',
-        },
-        {
-          value: '43',
-          label: '43',
-        },
-        {
-          value: '44',
-          label: '44',
-          
-        }
-      ],
-    },
-  ];
+ 
 
-  const data = [
-    {
-      key: '1',
-      firstName: 'John',
-      lastName: 'Brown',
-      RollNumber: 32,
-      Mail_Id: 'New York No. 1 Lake Park',
-      MobileNumber:'98929839',
-      tags: ['Yes'],
-    },
-    {
-      key: '2',
-      firstName: 'Jim',
-      lastName: 'Green',
-      RollNumber: 42,
-      Mail_Id: 'London No. 1 Lake Park',
-      MobileNumber:'98929839',
-      tags: ['No'],
-    },
-    {
-      key: '3',
-      firstName: 'Joe',
-      lastName: 'Black',
-      RollNumber: 32,
-      Mail_Id: 'Sidney No. 1 Lake Park',
-      MobileNumber:'98929839',
-      tags: ['Yes'],
-    },
-  ];
 
   const onFormLayoutChange = ({ size }) => {
     setComponentSize(size);
@@ -205,3 +106,24 @@ const Allotment = () => {
 
 export default Allotment;
 
+
+// const data = [
+//     {
+//       key: '1',
+//       firstName: 'John',
+//       lastName: 'Brown',
+//       RollNumber: 32,
+//       Mail_Id: 'New York No. 1 Lake Park',
+//       MobileNumber:'98929839',
+//       tags: ['Yes'],
+//     },
+//     {
+//       key: '2',
+//       firstName: 'Jim',
+//       lastName: 'Green',
+//       RollNumber: 42,
+//       Mail_Id: 'London No. 1 Lake Park',
+//       MobileNumber:'98929839',
+//       tags: ['No'],
+//     },
+//   ];

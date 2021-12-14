@@ -13,12 +13,16 @@ import {
   } from 'antd';
 import { Rate } from 'antd';
 import { messcomp } from '../../actions/crud';
+import dateFormat from "dateformat";
+import moment from 'moment';
 import {useSelector , useDispatch} from "react-redux";
 
 const Messpage = () => {
     const [componentSize, setComponentSize] = useState('default');
     const [form] = Form.useForm();
     const dispatch = useDispatch();
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+    const dateFormat = 'YYYY/MM/DD';
 
     const onFinish = (values) => {
       console.log(values.Date_Of_Issue._d);
@@ -28,8 +32,7 @@ const Messpage = () => {
       const Rating = values['Rating'].toString();
       const Values = {
         ...values ,
-        "Emp_Id" :"1",
-        // 'Date_Of_Issue' : "2002-12-12",
+        'Emp_Id' : user?.result.Emp_Id,        // 'Date_Of_Issue' : "2002-12-12",
         "Rating" : Rating 
   
       };
@@ -70,7 +73,7 @@ return (
         </Form.Item> */}
         
         <Form.Item name = "Date_Of_Issue" label="DatePicker">
-          <DatePicker />
+        <DatePicker format={dateFormat} />
         </Form.Item>
 
         <Form.Item name = "noon" label="select">

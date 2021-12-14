@@ -19,6 +19,7 @@ const { Option } = Select;
 const Postupdates = () => {
   const [componentSize, setComponentSize] = useState('default');
   const [form] = Form.useForm();
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
   const dispatch = useDispatch();
   const today = Date.now();
 
@@ -26,7 +27,7 @@ const Postupdates = () => {
     console.log('Received values of form: ', values);
     const Value = {
       ...values,
-      "Emp_Id": "1",
+      'Emp_Id' : user?.result.Emp_Id,
       "Date_Of_Issue": new Intl.DateTimeFormat('en-US', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }).format(today),
     };
     console.log(Value);

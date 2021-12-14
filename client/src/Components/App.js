@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 // import './App.css';
 import AdminLanding from './Hostel_Admin_Landing/AdminLanding';
 import Postupdates from './Hostel_Admin_Landing/Postupdates';
-import Feedback from './Hostel_Admin_Landing/Feedback';
 import Navbar from './Student_Landing/navibar';
 import SignUp from './Student_Landing/Auth/Auth';
 import MessAdminLanding from './Mess_Admin_Landing/AdminLanding';

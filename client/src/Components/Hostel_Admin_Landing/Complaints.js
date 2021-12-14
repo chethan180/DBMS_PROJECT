@@ -11,6 +11,7 @@ const { Column, ColumnGroup } = Table;
 export const Complaints = () => {
   const [loading , setloading] = useState(true);
   const [data ,setdata] = useState([]);
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
   const dispatch = useDispatch();
   const form = {"Emp_Id" : "1"}
   useEffect(() => {
