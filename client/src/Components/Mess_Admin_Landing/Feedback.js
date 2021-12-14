@@ -60,8 +60,8 @@ const Feedback = () => {
     console.log('Received values of form: ', values);
     const Value = {
       ...values,
+      "Date_Of_Issue" : values['Date_Of_Issue'].format('YYYY-MM-DD')
       // "Emp_Id": "1",
-      // "Complained_Date": new Intl.DateTimeFormat('en-US', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }).format(today),
     };
     console.log(Value);
     dispatch(reviews(Value));

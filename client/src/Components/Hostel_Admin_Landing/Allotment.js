@@ -2,7 +2,9 @@ import React, { useState ,useEffect } from 'react';
 import {BrowserRouter as Router,Route, Switch} from "react-router-dom";
 import { Table, Tag, Space } from 'antd';
 import {Allot} from "../../actions/crud";
+import { isEmp } from '../../actions/crud';
 import {useDispatch , useSelector} from "react-redux";
+import { Descriptions } from 'antd';
 import {
   Form,
   Input,
@@ -73,9 +75,13 @@ const Allotment = () => {
   const post = useSelector( (state) => state.allot.data);
   console.log(post);
 
+  const post2 = useSelector( (state) => state.empty.data);
+  console.log(post2);
 
   useEffect(() => {
-    
+    dispatch(isEmp());
+  } , [])
+  useEffect(() => {
     if(post){
       setdata(post);
       setloading(false);
@@ -116,6 +122,9 @@ const Allotment = () => {
         </Button>
       </Form.Item>
       </Form>
+      <Descriptions title="Filled Rooms">
+    <Descriptions.Item label=""> Maomao</Descriptions.Item>
+  </Descriptions>
     </>
   );          
   }
@@ -155,6 +164,9 @@ const Allotment = () => {
             </Button>
           </Form.Item>
         </Form>
+        <Descriptions title="User Info">
+    <Descriptions.Item label="Filled Rooms ">Zhou Maomao</Descriptions.Item>
+  </Descriptions>
         <Table dataSource={data}>
           <Column title="Id" dataIndex="Emp_Id" key="Emp_Id" />
           <Column title="Name" dataIndex="Staff_Name" key="Staff_Name" />

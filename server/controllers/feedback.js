@@ -7,7 +7,7 @@ export const fd = async (req,res) => {
         console.log(x.Date_Of_Issue);
         const z= x.noon;
         var data;
-             data = await mess_remarks.find({ noon : x.noon });
+             data = await mess_remarks.find({ noon : x.noon ,Date_Of_Issue : x.Date_Of_Issue });
         let sum = 0;
 
         data.forEach((rev) => {
@@ -22,7 +22,7 @@ export const fd = async (req,res) => {
         // const cnt = await mess_remarks.find();
         const cnt = await mess_remarks.aggregate(
             [
-                {$match : { noon : x.noon }},
+                {$match : { noon : x.noon,Date_Of_Issue : x.Date_Of_Issue  }},
                 {$group : {_id : "$Rating", "count" : {$sum : 1}}},
             ]);
         const result  = {Bar : cnt , Avg : avg ,  review : data};

@@ -28,7 +28,7 @@ const MessAdminLanding = () =>
             <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
               <Menu.Item key="1" icon={<UserOutlined />}>
                 Post Updates
-                <Link to = '/admin1/Postupdates'/>
+                <Link to = '/admin1/'/>
               </Menu.Item>
               <Menu.Item key="2" icon={<UploadOutlined />}>
                 Feedback

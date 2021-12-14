@@ -1,4 +1,4 @@
-import { COMPL, FETCH,AL , MESSCOMPL ,WCOMPL, AUTH, WUPDT, REVIEW, SOLV, ALLOT} from '../constants/actionTypes';
+import { COMPL, FETCH,AL , MESSCOMPL ,WCOMPL, AUTH, WUPDT, REVIEW, SOLV, ALLOT, EM} from '../constants/actionTypes';
 import * as api from '../api';
 
 export const getPosts = (formData) => async (dispatch) => {
@@ -13,6 +13,20 @@ export const getPosts = (formData) => async (dispatch) => {
     catch(error){
         console.log(error.message);
     }
+}
+
+export const isEmp = (formData) => async (dispatch) => {
+
+  try {
+    console.log(formData);
+      const data  = await api.eM(formData);
+      console.log(data);
+      dispatch({ type:EM , payload :data});
+
+  }
+  catch(error){
+      console.log(error.message);
+  }
 }
 
 export const solvPosts = (formData) => async (dispatch) => {

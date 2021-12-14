@@ -27,14 +27,14 @@ const Messpage = () => {
     const onFinish = (values) => {
       console.log(values.Date_Of_Issue._d);
       console.log('Received values of form: ', values);
-      const rangeTimeValue = values['Date_Of_Issue'];
-      
+      const rangeTimeValue = values['Date_Of_Issue'].format('YYYY-MM-DD');
+
       const Rating = values['Rating'].toString();
       const Values = {
         ...values ,
         'Emp_Id' : user?.result.Emp_Id,        // 'Date_Of_Issue' : "2002-12-12",
-        "Rating" : Rating 
-  
+        "Rating" : Rating ,
+        "Date_Of_Issue" : values['Date_Of_Issue'].format('YYYY-MM-DD')
       };
       console.log("Value" , Values);
       dispatch(messcomp(Values));
@@ -73,7 +73,7 @@ return (
         </Form.Item> */}
         
         <Form.Item name = "Date_Of_Issue" label="DatePicker">
-        <DatePicker format={dateFormat} />
+          <DatePicker  />
         </Form.Item>
 
         <Form.Item name = "noon" label="select">

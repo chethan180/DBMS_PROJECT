@@ -10,7 +10,7 @@ export const wupdates =
         console.log(oldStaff);
         if (!oldStaff) return res.status(404).json({message : "User dosen't exist"});
 
-        const result = await warden_updates.create({Emp_Id : x.Emp_Id ,Comments : x.Comments , Date_Of_Issue : x.Date_Of_Issue });
+        const result = await warden_updates.create({Emp_Id : x.Emp_Id ,Staff_Name : oldStaff.Staff_Name, Batch : x.Batch ,Comments : x.Comments , Date_Of_Issue : x.Date_Of_Issue });
         // console.log(result);
         return res.status(200).json(result);
         // const result = await leave.find({ 'Emp_Id': x.Emp_Id }).exec();

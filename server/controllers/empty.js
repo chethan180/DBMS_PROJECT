@@ -5,20 +5,26 @@ import hst_details from "../models/hst_details.js";
 export const empty = async (req,res) => {
     const x = req.body;
     try{
-
-        // const result = await hst_complaints.create({Emp_Id : x.Emp_Id ,Sroom : x.Sroom ,Sblock : x.Sblock , Type : x.Type ,Complained_Date : x.Complained_Date, Comments : x.Comments });
+        const x = [];
         const cnt = await hst_details.aggregate(
             [
                 {$match : { }},
                 {$group : {_id : "$Room", "count" : {$sum : 1}}},
             ]);
-        
+            console.log(cnt);
+            for (let i =0 ;i<cnt.length ;i++) {
+                if(cnt[i].count==2)
+                {
+                    x.push(cnt[i]);
+                    console.log(cnt[i]._id);
+                }
+              }
         // console.log(result);
         // const cnti =  cnt.filter(
         //     [
 
         //     ]);
-        return res.status(200).json(cnt);
+        return res.status(200).json(x);
 
         // const result = await leave.find({ 'Emp_Id': x.Emp_Id }).exec();
 

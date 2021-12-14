@@ -11,19 +11,23 @@ const { Column, ColumnGroup } = Table;
 export const Complaints = () => {
   const [loading , setloading] = useState(true);
   const [data ,setdata] = useState([]);
+  const [flag ,setflag] = useState(1);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
   const dispatch = useDispatch();
   const form = {"Emp_Id" : "1"}
   useEffect(() => {
     dispatch(wcomp(form));
-  } , [dispatch])
+  } , [dispatch ,flag])
 
   const post = useSelector( (state) => state.wcomp.data);
   console.log(post);
 
+
+
   const send = (xyz) => {
     console.log(xyz);
     dispatch(solvPosts(xyz));
+    setflag(0);
   }
   useEffect(() => {
     // console.log(post);
