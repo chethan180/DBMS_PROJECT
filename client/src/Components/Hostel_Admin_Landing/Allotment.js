@@ -54,6 +54,7 @@ const Allotment = () => {
   const [form] = Form.useForm();
   const [loading , setloading] = useState(true);
   const [data ,setdata] = useState([]);
+  const [datae , setdatae]  = useState([]);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
 
@@ -85,6 +86,12 @@ const Allotment = () => {
     if(post){
       setdata(post);
       setloading(false);
+    }
+  });
+  useEffect(() => {
+    if(post2){
+      setdatae(post2);
+      console.log(datae)
     }
   });
   if(loading)
@@ -122,9 +129,9 @@ const Allotment = () => {
         </Button>
       </Form.Item>
       </Form>
-      <Descriptions title="Filled Rooms">
-    <Descriptions.Item label=""> Maomao</Descriptions.Item>
-  </Descriptions>
+      <Table dataSource={datae}>
+          <Column title="ROOM" dataIndex="_id" key="_id" />
+          </Table>
     </>
   );          
   }
@@ -164,9 +171,9 @@ const Allotment = () => {
             </Button>
           </Form.Item>
         </Form>
-        <Descriptions title="User Info">
-    <Descriptions.Item label="Filled Rooms ">Zhou Maomao</Descriptions.Item>
-  </Descriptions>
+  <Table dataSource={datae}>
+          <Column title="ROOM" dataIndex="Room" key="Room" />
+          </Table>
         <Table dataSource={data}>
           <Column title="Id" dataIndex="Emp_Id" key="Emp_Id" />
           <Column title="Name" dataIndex="Staff_Name" key="Staff_Name" />
