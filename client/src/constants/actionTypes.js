@@ -8,6 +8,7 @@ export const LOGOUT = 'LOGOUT';
 export const COMPL = 'COMPL';
 
 export const WUPDT = 'WUPDT';
+export const REVIEW = 'REVIEW';
 
 export const MESSCOMPL = 'MESSCOMPL';
 export const WCOMPL = 'WCOMPL';

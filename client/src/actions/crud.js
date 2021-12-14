@@ -1,4 +1,4 @@
-import { COMPL, FETCH , MESSCOMPL ,WCOMPL, AUTH, WUPDT} from '../constants/actionTypes';
+import { COMPL, FETCH , MESSCOMPL ,WCOMPL, AUTH, WUPDT, REVIEW} from '../constants/actionTypes';
 import * as api from '../api';
 
 export const getPosts = (formData) => async (dispatch) => {
@@ -64,6 +64,19 @@ export const wcomp = (formData) => async (dispatch) => {
       const data  = await api.wcomplaints(formData);
       console.log(data);
       dispatch({ type : WCOMPL, payload :data});
+
+  }
+  catch(error){
+      console.log(error.message);
+  }
+}
+export const reviews = (formData) => async (dispatch) => {
+
+  try {
+    console.log(formData);
+      const data  = await api.review(formData);
+      console.log(data);
+      dispatch({ type : REVIEW, payload :data});
 
   }
   catch(error){

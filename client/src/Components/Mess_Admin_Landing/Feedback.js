@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect } from 'react';
 import {BrowserRouter as Router,Route, Switch} from "react-router-dom";
 import { Table, Tag, Space } from 'antd';
+import {reviews} from "../../actions/crud";
+import {useDispatch , useSelector} from "react-redux";
+import DemoBar from './review';
 import {
   Form,
   Input,
@@ -13,71 +16,90 @@ import {
   TreeSelect,
 } from 'antd';
 
+const formItemLayout = {
+  labelCol: {
+    xs: {
+      span: 24,
+    },
+    sm: {
+      span: 8,
+    },
+  },
+  wrapperCol: {
+    xs: {
+      span: 24,
+    },
+    sm: {
+      span: 16,
+    },
+  },
+};
+const tailFormItemLayout = {
+  wrapperCol: {
+    xs: {
+      span: 24,
+      offset: 0,
+    },
+    sm: {
+      span: 16,
+      offset: 8,
+    },
+  },
+};
+
 const Feedback = () => {
-  const [componentSize, setComponentSize] = useState('default');
+  const [form] = Form.useForm();
+  const [loading , setloading] = useState(true);
+  const [data ,setdata] = useState([]);
+  
 
-  const data = [
-    {
-      key: '1',
-      firstName: 'John',
-      lastName: 'Brown',
-      RollNumber: 32,
-      Mail_Id: 'New York No. 1 Lake Park',
-      MobileNumber:'98929839',
-      tags: ['Yes'],
-    },
-    {
-      key: '2',
-      firstName: 'Jim',
-      lastName: 'Green',
-      RollNumber: 42,
-      Mail_Id: 'London No. 1 Lake Park',
-      MobileNumber:'98929839',
-      tags: ['No'],
-    },
-    {
-      key: '3',
-      firstName: 'Joe',
-      lastName: 'Black',
-      RollNumber: 32,
-      Mail_Id: 'Sidney No. 1 Lake Park',
-      MobileNumber:'98929839',
-      tags: ['Yes'],
-    },
-  ];
+  const dispatch = useDispatch();
+  const today = Date.now();
 
-  const onFormLayoutChange = ({ size }) => {
-    setComponentSize(size);
-  };
+  function onFinish(values) {
+    console.log('Received values of form: ', values);
+    const Value = {
+      ...values,
+      // "Emp_Id": "1",
+      // "Complained_Date": new Intl.DateTimeFormat('en-US', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }).format(today),
+    };
+    console.log(Value);
+    dispatch(reviews(Value));
+  }
+  
+  
 
-  return (
+  const post = useSelector( (state) => state.review.data);
+  console.log(post);
+
+
+  useEffect(() => {
+    
+    if(post){
+      setdata(post);
+      setloading(false);
+    }
+  });
+  if(loading)
+  {
+    console.log("jio");
+      return(
     <>
-      <Form dataSource={data} 
-        labelCol={{
-          span: 4,
-        }}
-        wrapperCol={{
-          span: 14,
-        }}
-        layout="horizontal"
-        initialValues={{
-          size: componentSize,
-        }}
-        onValuesChange={onFormLayoutChange}
-        size={componentSize}
+      <Form      {...formItemLayout}
+      form={form}
+      name="register"
+      onFinish={onFinish}
+      initialValues={{
+        residence: ['zhejiang', 'hangzhou', 'xihu'],
+        prefix: '86',
+      }}
+      scrollToFirstError
       >
           
-        <Form.Item label="Form Size" name="size">
-          <Radio.Group>
-            <Radio.Button value="small">Small</Radio.Button>
-            <Radio.Button value="default">Default</Radio.Button>
-            <Radio.Button value="large">Large</Radio.Button>
-          </Radio.Group>
-        </Form.Item>
-        <Form.Item label="DatePicker">
+        <Form.Item name = "Date_Of_Issue" label="DatePicker">
           <DatePicker />
         </Form.Item>
-        <Form.Item label="Select">
+        <Form.Item name = "noon" label="Select">
           <Select>
             <Select.Option value="Breakfast">Breakfast</Select.Option>
             <Select.Option value="Lunch">Lunch</Select.Option>
@@ -85,7 +107,7 @@ const Feedback = () => {
             <Select.Option value="Dinner">Dinner</Select.Option>
           </Select>
         </Form.Item>
-        <Form.Item label="Number of Ratings">
+        {/* <Form.Item label="Number of Ratings">
         </Form.Item>
 
         <Form.Item label="Rating">
@@ -96,14 +118,69 @@ const Feedback = () => {
         
         <Form.Item label="Rating">
             
-        </Form.Item>
-     
-       
-
-
+        </Form.Item> */}
+           <Form.Item {...tailFormItemLayout}>
+        <Button type="primary" htmlType="submit">
+          Register
+        </Button>
+      </Form.Item>
       </Form>
     </>
-  );
+  );          
+  }
+
+  else{
+    console.log("airtel");
+    // form = ;
+    return(
+    <>
+    <Form      {...formItemLayout}
+    form={form}
+    name="register"
+    onFinish={onFinish}
+    initialValues={{
+      residence: ['zhejiang', 'hangzhou', 'xihu'],
+      prefix: '86',
+    }}
+    scrollToFirstError
+    >
+        
+      <Form.Item name = "Date_Of_Issue" label="DatePicker">
+        <DatePicker />
+      </Form.Item>
+      <Form.Item name = "noon" label="Select">
+        <Select>
+          <Select.Option value="Breakfast">Breakfast</Select.Option>
+          <Select.Option value="Lunch">Lunch</Select.Option>
+          <Select.Option value="Snacks">Snacks</Select.Option>
+          <Select.Option value="Dinner">Dinner</Select.Option>
+        </Select>
+      </Form.Item>
+      {/* <Form.Item label="Number of Ratings">
+      </Form.Item>
+
+      <Form.Item label="Rating">
+      </Form.Item>
+
+      <Form.Item label="Individual Ratings">
+      </Form.Item>
+      
+      <Form.Item label="Rating">
+          
+      </Form.Item> */}
+         <Form.Item {...tailFormItemLayout}>
+      <Button type="primary" htmlType="submit">
+        Register
+      </Button>
+    </Form.Item>
+    </Form>
+    <DemoBar data = {post}/>
+  </>
+    );
+  }
+
+
+
 };
 
 export default Feedback;
