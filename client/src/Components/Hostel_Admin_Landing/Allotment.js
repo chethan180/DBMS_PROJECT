@@ -1,85 +1,99 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect } from 'react';
 import {BrowserRouter as Router,Route, Switch} from "react-router-dom";
-import { Rate } from 'antd';
 import { Table, Tag, Space } from 'antd';
-import { Cascader } from 'antd';
-
+import {Allot} from "../../actions/crud";
+import {useDispatch , useSelector} from "react-redux";
 import {
   Form,
   Input,
   Button,
   Radio,
   Select,
-  // Cascader,
+  Cascader,
   DatePicker,
   InputNumber,
   TreeSelect,
 } from 'antd';
-
 const { Column, ColumnGroup } = Table;
 
+
+const formItemLayout = {
+  labelCol: {
+    xs: {
+      span: 24,
+    },
+    sm: {
+      span: 8,
+    },
+  },
+  wrapperCol: {
+    xs: {
+      span: 24,
+    },
+    sm: {
+      span: 16,
+    },
+  },
+};
+const tailFormItemLayout = {
+  wrapperCol: {
+    xs: {
+      span: 24,
+      offset: 0,
+    },
+    sm: {
+      span: 16,
+      offset: 8,
+    },
+  },
+};
+
 const Allotment = () => {
+  const [form] = Form.useForm();
   const [loading , setloading] = useState(true);
   const [data ,setdata] = useState([]);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-  const dispatch = useDispatch();
-  const form = {"Emp_Id" : "1"}
-  useEffect(() => {
-    dispatch(wcomp(form));
-  } , [dispatch])
 
-  const post = useSelector( (state) => state.wcomp.data);
+
+  const dispatch = useDispatch();
+  const today = Date.now();
+
+  function onFinish(values) {
+    console.log('Received values of form: ', values);
+    const Value = {
+      ...values,
+      // "Complained_Date": new Intl.DateTimeFormat('en-US', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }).format(today),
+    };
+    console.log(Value);
+    dispatch(Allot(Value));
+  }
+  
+  
+
+  const post = useSelector( (state) => state.allot.data);
   console.log(post);
 
-  const send = (xyz) => {
-    console.log(xyz);
-    dispatch(solvPosts(xyz));
-  }
+
   useEffect(() => {
-    // console.log(post);
+    
     if(post){
-      // console.log(post);
-      // const q = post;
       setdata(post);
-      // console.log(posts);
       setloading(false);
     }
-  } );
+  });
   if(loading)
   {
+    console.log("jio");
       return(
-          <div>
-              wait
-          </div>
-      );
-  }
-  function onChange(value) {
-    console.log(value);
-  }
-
-
-  const onFormLayoutChange = ({ size }) => {
-    setComponentSize(size);
-  };
-
-  return (
     <>
-      <Form
-        labelCol={{
-          span: 4,
-        }}
-        wrapperCol={{
-          span: 14,
-        }}
-        layout="horizontal"
-        initialValues={{
-          size: componentSize,
-        }}
-        onValuesChange={onFormLayoutChange}
-        size={componentSize}
+      <Form      {...formItemLayout}
+      form={form}
+      name="register"
+      onFinish={onFinish}
+      scrollToFirstError
       >
-        
-        <Form.Item label="Block">
+          
+          <Form.Item name = "Block"label="Block">
           <Select>
             <Select.Option value="Nilgiri">Nilgiri</Select.Option>
             <Select.Option value="Aravalli">Aravalli</Select.Option>
@@ -92,49 +106,67 @@ const Allotment = () => {
         {/* <Cascader options={options} onChange={onChange} placeholder="Please select" /> */}
         <Input/>
         </Form.Item>
-    
-       
-
-        <Table dataSource={data}>
-        <ColumnGroup title="Name">
-          <Column title="First Name" dataIndex="firstName" key="firstName" />
-          <Column title="Last Name" dataIndex="lastName" key="lastName" />
-        </ColumnGroup>
-        <Column title="Roll Number" dataIndex="RollNumber" key="RollNumber" />
-        <Column title="Mail_Id" dataIndex="Mail_Id" key="Mail_Id" />
-        <Column title="Mobile Number" dataIndex="MobileNumber" key="MobileNumber" />
-        <Column
-          title=" Fully Vaccinated"
-          dataIndex="tags"
-          key="tags"
-          render={tags => (
-            <>
-              {tags.map(tag => (
-                <Tag color="blue" key={tag}>
-                  {tag}
-                </Tag>
-              ))}
-            </>
-          )}
-        />
-        <Column
-          title="Action"
-          key="action"
-          render={(text, record) => (
-            <Space size="middle">
-              <a>Remove {record.lastName}</a>
-            </Space>
-          )}
-        />
-      </Table>
-      <Form.Item>
-          <Button>Allot</Button>
+        <Form.Item name = "Emp_Id" label="Id">
+        {/* <Cascader options={options} onChange={onChange} placeholder="Please select" /> */}
+        <Input/>
         </Form.Item>
-
+           <Form.Item {...tailFormItemLayout}>
+        <Button type="primary" htmlType="submit">
+          Register
+        </Button>
+      </Form.Item>
       </Form>
     </>
-  );
-};
+  );          
+  }
 
-export default Allotment;
+  else{
+    console.log("airtel");
+    // form = ;
+    return(
+    <>
+        <Form {...formItemLayout}
+          form={form}
+          name="register"
+          onFinish={onFinish}
+          scrollToFirstError
+        >
 
+          <Form.Item name = "Block" label="Block">
+            <Select>
+              <Select.Option value="Nilgiri">Nilgiri</Select.Option>
+              <Select.Option value="Aravalli">Aravalli</Select.Option>
+              <Select.Option value="Satpura">Satpura</Select.Option>
+              <Select.Option value="Vindhya">Vindhya</Select.Option>
+            </Select>
+          </Form.Item>
+
+          <Form.Item name="Room" label="Room Number">
+            <Input />
+          </Form.Item>
+
+          <Form.Item name = "Emp_Id" label="Id">
+        <Input/>
+        </Form.Item>
+
+          <Form.Item {...tailFormItemLayout}>
+            <Button type="primary" htmlType="submit">
+              Register
+            </Button>
+          </Form.Item>
+        </Form>
+        <Table dataSource={data}>
+          <Column title="Id" dataIndex="Emp_Id" key="Emp_Id" />
+          <Column title="Name" dataIndex="Staff_Name" key="Staff_Name" />
+          <Column title="Batch" dataIndex="Batch" key="Batch" />
+          <Column title="Room" dataIndex="Room" key="Room" />
+          <Column title="Block" dataIndex="Block" key="Block" />
+          </Table>
+      </>
+          );
+          }
+
+
+
+          };
+export default Allotment; 

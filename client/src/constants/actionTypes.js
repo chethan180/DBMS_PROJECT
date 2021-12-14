@@ -9,7 +9,8 @@ export const COMPL = 'COMPL';
 
 export const WUPDT = 'WUPDT';
 export const REVIEW = 'REVIEW';
-export const SOLV = 'SOLV'
+export const SOLV = 'SOLV';
+export const ALLOT = 'ALLOT';
 
 export const MESSCOMPL = 'MESSCOMPL';
 export const WCOMPL = 'WCOMPL';

@@ -7,22 +7,28 @@ export const allotment = async (req,res) => {
         const z = x.Emp_Id;
         console.log("x= " ,x);
         const oldStaff = await staff.findOne({ 'Emp_Id': x.Emp_Id });
-        if(oldStaff.Type !== "ADMIN"){
-            return res.status(404).json({message : "User dosen't exist"});
-        }
+        // if(oldStaff.Type !== "ADMIN"){
+        //     return res.status(404).json({message : "User dosen't exist"});
+        // }
         // const oldStaff = await staff.find();
         console.log(oldStaff);
         // return res.json(oldStaff);
         if (!oldStaff) return res.status(404).json({message : "User dosen't exist"});
         
-        const room = await hst_details.find({ 'Room' : x.Room});
+        const room = await hst_details.find({ 'Room' : x.Room , 'Block' : x.Block  });
+        console.log(room);
+        if(room.length > 1 ){ return res.status(404).json({message : "room is occupied"})};
 
-        if(room.length > 1 ){ return res.status(200).json({message : "room is occupied"})};
 
+        const result = await hst_details.create({Emp_Id : x.Emp_Id ,Staff_Name : oldStaff.Staff_Name ,Batch : oldStaff.Batch ,Room : x.Room ,Block : x.Block   });
+        console.log("result" ,result);
+        const xzc = [];
+        xzc.push(result);
+        console.log(xzc);
 
-        const result = await hst_details.create({Emp_Id : x.Emp_Id ,Staff : x.Staff ,Batch : x.Batch ,Room : x.Sroom ,Block : x.Sblock  , });
-        // // console.log(result);
-        return res.status(200).json(result);
+        const room2 = await hst_details.find({ 'Room' : x.Room , 'Block' : x.Block  });
+
+        return res.status(200).json(room2);
         // // const result = await leave.find({ 'Emp_Id': x.Emp_Id }).exec();
 
 

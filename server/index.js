@@ -10,7 +10,7 @@ import wupd from "./routes/wupd.js";
 import Auth from './routes/auth.js';
 import feed from "./routes/feed.js";
 import solv from './routes/solv.js';
-
+import allot from './routes/allot.js';
 
 
 
@@ -35,7 +35,7 @@ app.use('/wupd',wupd);
 app.use('/auth',Auth);
 app.use('/feed',feed);
 app.use('/solv' ,solv);
-
+app.use('/allot',allot);
 
 const CONNECTION_URL = `mongodb+srv://${user}:${pswrd}@cluster0.p6xod.mongodb.net/Student?retryWrites=true&w=majority`;
 const PORT = process.env.PORT|| 5000;
