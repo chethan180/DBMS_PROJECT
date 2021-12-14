@@ -11,7 +11,7 @@ export const wc =
         console.log(oldStaff);
         if (!oldStaff) return res.status(404).json({message : "User dosen't exist"});
 
-        const result = await hst_complaints.find();
+        const result = await hst_complaints.find({'is_Solved' : null });
 
         return res.status(200).json(result);
 
