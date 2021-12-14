@@ -17,13 +17,12 @@ export const allotment = async (req,res) => {
         
         const room = await hst_details.find({ 'Room' : x.Room});
 
-        if(room.length > 1 ){ return res.status(200).json(room)};
+        if(room.length > 1 ){ return res.status(200).json({message : "room is occupied"})};
 
 
-
-        // const result = await hst_complaints.create({Emp_Id : x.Emp_Id ,Sroom : x.Sroom ,Sblock : x.Sblock , Type : x.Type ,Complained_Date : x.Complained_Date, Comments : x.Comments });
+        const result = await hst_details.create({Emp_Id : x.Emp_Id ,Staff : x.Staff ,Batch : x.Batch ,Room : x.Sroom ,Block : x.Sblock  , });
         // // console.log(result);
-        // return res.status(200).json(result);
+        return res.status(200).json(result);
         // // const result = await leave.find({ 'Emp_Id': x.Emp_Id }).exec();
 
 
