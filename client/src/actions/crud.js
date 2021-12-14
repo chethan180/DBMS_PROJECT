@@ -1,4 +1,4 @@
-import { COMPL, FETCH , MESSCOMPL ,WCOMPL, AUTH, WUPDT, REVIEW, SOLV, ALLOT} from '../constants/actionTypes';
+import { COMPL, FETCH,AL , MESSCOMPL ,WCOMPL, AUTH, WUPDT, REVIEW, SOLV, ALLOT} from '../constants/actionTypes';
 import * as api from '../api';
 
 export const getPosts = (formData) => async (dispatch) => {
@@ -35,13 +35,36 @@ export const Allot = (formData) => async (dispatch) => {
     console.log(formData);
       const data  = await api.allot(formData);
       console.log(data);
-      dispatch({ type:ALLOT, payload :data});
+      console.log(data.data.message );
+      if(data.data.message === "full"){
+            alert("Room is full");  
+        console.log(data)
+      }
+      else{
+        dispatch({ type:ALLOT, payload :data});
+
+      }
 
   }
   catch(error){
       console.log(error.message);
   }
 }
+
+export const applyLeave = (formData) => async (dispatch) => {
+
+  try {
+    console.log(formData);
+      const data  = await api.aL(formData);
+      console.log(data);
+      dispatch({ type:AL, payload :data});
+
+  }
+  catch(error){
+      console.log(error.message);
+  }
+}
+
 
 export const comp = (formData) => async (dispatch) => {
 

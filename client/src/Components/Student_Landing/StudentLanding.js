@@ -7,7 +7,7 @@ import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/i
 import Updates from './Updates';
 import Complaints from './Complaints';
 import Messpage from './Messpage';
-
+import LeaveForm from './Outpass';
 const { Header, Content, Footer, Sider } = Layout;
 
 
@@ -39,6 +39,10 @@ const StudentLanding = () =>
                 Mess Feedback
                 <Link to = '/student/Messpage'/>
               </Menu.Item>
+              <Menu.Item key="4" icon={<UploadOutlined />}>
+                Outpass
+                <Link to = '/student/Outpass'/>
+              </Menu.Item>
             </Menu>
           </Sider>
           <Layout>
@@ -46,6 +50,7 @@ const StudentLanding = () =>
               <Route path = "/student" exact  component = {Updates}/>
               <Route path = "/student/complaints" exact component = {Complaints}/>
               <Route path = "/student/Messpage" exact component = {Messpage}/>
+              <Route path = "/student/Outpass" exact component = {LeaveForm}/>
             </Content>
           </Layout>
         </Layout>

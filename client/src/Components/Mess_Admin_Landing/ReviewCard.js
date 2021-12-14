@@ -11,7 +11,7 @@ const ReviewCard = ({ rvw }) => {
 
   return (
     <div className="reviewCard">
-      <p>{rvw.Emp_Id}</p>
+      <p className = "hi"> Id : {rvw.Emp_Id}</p>
       <Rating {...options} />
       <span className="reviewCardComment">{rvw.Remarks}</span>
     </div>

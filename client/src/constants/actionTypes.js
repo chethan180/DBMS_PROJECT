@@ -14,3 +14,4 @@ export const ALLOT = 'ALLOT';
 
 export const MESSCOMPL = 'MESSCOMPL';
 export const WCOMPL = 'WCOMPL';
+export const AL = 'AL';
