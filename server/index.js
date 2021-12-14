@@ -11,8 +11,8 @@ import Auth from './routes/auth.js';
 import feed from "./routes/feed.js";
 import solv from './routes/solv.js';
 import allot from './routes/allot.js';
-
-
+import em from './routes/em.js';
+import out from './routes/outpass.js'
 
 import dotenv from 'dotenv';
 dotenv.config();
@@ -36,6 +36,8 @@ app.use('/auth',Auth);
 app.use('/feed',feed);
 app.use('/solv' ,solv);
 app.use('/allot',allot);
+app.use('/empty',em);
+app.use('/out',out);
 
 const CONNECTION_URL = `mongodb+srv://${user}:${pswrd}@cluster0.p6xod.mongodb.net/Student?retryWrites=true&w=majority`;
 const PORT = process.env.PORT|| 5000;
