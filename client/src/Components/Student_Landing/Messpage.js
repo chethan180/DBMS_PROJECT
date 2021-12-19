@@ -15,7 +15,12 @@ import { Rate } from 'antd';
 
 const Messpage = () => {
     const [componentSize, setComponentSize] = useState('default');
+    const [form] = Form.useForm();
 
+    const onFinish = (values) => {
+      console.log('Received values of form: ', values);
+    };
+  
   const onFormLayoutChange = ({ size }) => {
     setComponentSize(size);
 };
@@ -29,6 +34,9 @@ return (
         wrapperCol={{
           span: 14,
         }}
+        form={form}
+        name="register"
+        onFinish={onFinish}
         layout="horizontal"
         initialValues={{
           size: componentSize,
@@ -37,24 +45,24 @@ return (
         size={componentSize}
       >
         
-        <Form.Item label="Student ID">
+        <Form.Item name = "Emp_Id" label="Student ID">
           <Input />
         </Form.Item>
         
-        <Form.Item label="DatePicker">
+        <Form.Item name = "Date_Of_Issue" label="DatePicker">
           <DatePicker />
         </Form.Item>
 
-        <Form.Item label="Rating">
+        <Form.Item name = "Rating" label="Rating">
         <Rate allowHalf defaultValue={0.0} />
         </Form.Item>
        
-        <Form.Item label="Remarks">
+        <Form.Item name = "Remarks" label="Remarks">
           <Input.TextArea/>
         </Form.Item>
         
         <Form.Item>
-          <Button>Post</Button>
+          <Button type="primary" htmlType="submit">Post</Button>
         </Form.Item>
       </Form>
     </>

@@ -1,8 +1,8 @@
-import { FETCH_ALL } from '../constants/actionTypes';
+import { COMPL } from '../constants/actionTypes';
 
-export default (leav = [], action) => {
+export default (compl = [], action) => {
     switch(action.type ){
-        case FETCH_ALL:
+        case COMPL:
             {
                 // console.log(action.payload);
                 // return {...crud ,data: action.payload};
@@ -10,7 +10,7 @@ export default (leav = [], action) => {
             }
         default : 
         {
-            return leav;
+            return compl;
         }
     }
 }

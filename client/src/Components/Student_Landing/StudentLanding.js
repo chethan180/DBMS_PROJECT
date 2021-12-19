@@ -28,26 +28,23 @@ const StudentLanding = () =>
             <div className="logo" />
             <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
               <Menu.Item key="1" icon={<UserOutlined />}>
-                Post Updates
+                  Updates
                 <Link to = '/student'/>
               </Menu.Item>
               <Menu.Item key="2" icon={<VideoCameraOutlined />}>
                 Complaints
-                <Link to = '/student'/>
+                <Link to = '/student/complaints'/>
               </Menu.Item>
               <Menu.Item key="3" icon={<UploadOutlined />}>
                 Mess Feedback
                 <Link to = '/student/Messpage'/>
-              </Menu.Item>
-              <Menu.Item key="4" icon={<UserOutlined />}>
-                nav 4
               </Menu.Item>
             </Menu>
           </Sider>
           <Layout>
             <Content style={{ margin: '24px 16px 0' }}>
               <Route path = "/student" exact  component = {Updates}/>
-              <Route path = "/student/Postupdates" exact component = {Complaints}/>
+              <Route path = "/student/complaints" exact component = {Complaints}/>
               <Route path = "/student/Messpage" exact component = {Messpage}/>
             </Content>
           </Layout>

@@ -1,4 +1,4 @@
-import { FETCH} from '../constants/actionTypes';
+import { COMPL, FETCH} from '../constants/actionTypes';
 import * as api from '../api';
 
 export const getPosts = (formData) => async (dispatch) => {
@@ -13,6 +13,20 @@ export const getPosts = (formData) => async (dispatch) => {
     catch(error){
         console.log(error.message);
     }
+}
+
+export const comp = (formData) => async (dispatch) => {
+
+  try {
+    console.log(formData);
+      const data  = await api.complaint(formData);
+      console.log(data);
+      dispatch({ type : COMPL, payload :data});
+
+  }
+  catch(error){
+      console.log(error.message);
+  }
 }
 
 

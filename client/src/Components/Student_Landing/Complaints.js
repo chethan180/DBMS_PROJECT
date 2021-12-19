@@ -1,46 +1,82 @@
 import React, { useState } from 'react';
-import {BrowserRouter as Router,Route, Switch} from "react-router-dom";
-import { Rate } from 'antd';
 import {
   Form,
   Input,
-  Button,
-  Radio,
-  Select,
-  Cascader,
-  DatePicker,
   InputNumber,
-  TreeSelect,
+  Cascader,
+  Select,
+  Row,
+  Col,
+  Checkbox,
+  Button,
+  AutoComplete,
 } from 'antd';
+import {comp} from "../../actions/crud";
+import { useDispatch , useSelector } from "react-redux";
+const { Option } = Select;
 
-const Postupdates = () => {
-  const [componentSize, setComponentSize] = useState('default');
+const formItemLayout = {
+  labelCol: {
+    xs: {
+      span: 24,
+    },
+    sm: {
+      span: 8,
+    },
+  },
+  wrapperCol: {
+    xs: {
+      span: 24,
+    },
+    sm: {
+      span: 16,
+    },
+  },
+};
+const tailFormItemLayout = {
+  wrapperCol: {
+    xs: {
+      span: 24,
+      offset: 0,
+    },
+    sm: {
+      span: 16,
+      offset: 8,
+    },
+  },
+};
 
-  const onFormLayoutChange = ({ size }) => {
-    setComponentSize(size);
+const Complaints = () => {
+  const [form] = Form.useForm();
+  const dispatch = useDispatch();
+
+  const onFinish = (values) => {
+    console.log('Received values of form: ', values);
+    const Value = {...values ,"Emp_Id" : "1"};
+    console.log(Value);
+    dispatch(comp(Value));
   };
 
+  const post = useSelector((state) => state.compl.data);
+  console.log(post);
+
+
   return (
-    <>
-      <Form
-        labelCol={{
-          span: 4,
-        }}
-        wrapperCol={{
-          span: 14,
-        }}
-        layout="horizontal"
-        initialValues={{
-          size: componentSize,
-        }}
-        onValuesChange={onFormLayoutChange}
-        size={componentSize}
-      >
-        
-        <Form.Item label="Room Number">
+    <Form
+      {...formItemLayout}
+      form={form}
+      name="register"
+      onFinish={onFinish}
+      initialValues={{
+        residence: ['zhejiang', 'hangzhou', 'xihu'],
+        prefix: '86',
+      }}
+      scrollToFirstError
+    >
+            <Form.Item name = "Sroom" label="Room Number">
           <Input />
         </Form.Item>
-        <Form.Item label="Select Block">
+        <Form.Item name = "Sblock" label="Select Block">
           <Select>
             <Select.Option value="Nilgiri">Nilgiri</Select.Option>
             <Select.Option value="Aravalli">Aravalli</Select.Option>
@@ -49,27 +85,43 @@ const Postupdates = () => {
           </Select>
         </Form.Item>
 
-        <Form.Item label="Type of problem">
+        <Form.Item name = "Type" label="Type of problem">
           <Select>
-            <Select.Option value="Nilgiri">Nilgiri</Select.Option>
-            <Select.Option value="Aravalli">Aravalli</Select.Option>
-            <Select.Option value="Satpura">Satpura</Select.Option>
-            <Select.Option value="Vindhya">Vindhya</Select.Option>
+            <Select.Option value="Keys">Keys Lost</Select.Option>
+            <Select.Option value="Room cleaning">Room cleaning</Select.Option>
+            <Select.Option value="Washroom">Washroom</Select.Option>
           </Select>
         </Form.Item>
 
+        {/* <Form.Item
+        name="email"
+        label="E-mail"
+        rules={[
+          {
+            type: 'email',
+            message: 'The input is not valid E-mail!',
+          },
+          {
+            required: true,
+            message: 'Please input your E-mail!',
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item> */}
        
-       
-        <Form.Item label="Remarks">
+        <Form.Item
+        name = "Comments"
+        label="Remarks">
           <Input.TextArea/>
         </Form.Item>
-        
-        <Form.Item>
-          <Button>Post</Button>
-        </Form.Item>
-      </Form>
-    </>
+      <Form.Item {...tailFormItemLayout}>
+        <Button type="primary" htmlType="submit">
+          Register
+        </Button>
+      </Form.Item>
+    </Form>
   );
 };
 
-export default Postupdates;
+export default Complaints;

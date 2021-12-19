@@ -25,7 +25,7 @@ function App() {
 
             <Route path = "/student" exact component = {StudentLanding}/>
             <Route path = "/student/Messpage" exact component = {StudentLanding}/>
-
+            <Route path = "/student/complaints" exact component = {StudentLanding}/>
             {/* <Route path = "/admin/Postupdates" exact component = {AdminLanding}/> */}
           </Switch>
         </main>
